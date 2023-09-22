@@ -54,4 +54,4 @@
 
 # Progress
 
-- 22/9: finished the Section 1 - Quick start, no git repo cause the section is just concepts
+- 22/9: finished the Section 1 - Quick start, I've played around but there are just concepts, no need to keep in the repo.
