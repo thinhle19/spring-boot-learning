@@ -1,5 +1,6 @@
-package com.thinhle.springcore;
+package com.thinhle.springcore.common;
 
+import com.thinhle.springcore.common.Coach;
 import org.springframework.stereotype.Component;
 
 // Spring is dynamic => IDE may not be able to determine of a given class/method is used at runtime

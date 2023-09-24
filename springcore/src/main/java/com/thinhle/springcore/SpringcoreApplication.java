@@ -10,11 +10,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication; //enable au
 // composed of these annotations @EnableAutoConfiguration @ComponentScan @Configuration
 
 
+//@SpringBootApplication(scanBasePackages = {"com.thinhle.springcore",  "com.thinhle.util"})
 @SpringBootApplication
 public class SpringcoreApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringcoreApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringcoreApplication.class, args);
+    }
 
 }
