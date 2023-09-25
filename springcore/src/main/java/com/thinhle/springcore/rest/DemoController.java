@@ -17,7 +17,7 @@ public class DemoController {
     // constructor for dpdc injection
     @Autowired // tell Spring to inject dependency
     // optional if there's just 1 constructor
-    public DemoController(@Qualifier("cricketCoach") Coach theCoach
+    public DemoController(@Qualifier("aBeanId") Coach theCoach
                          /* @Qualifier("cricketCoach") Coach theAnotherCoach*/) {
         System.out.println("ctor: " + getClass().getSimpleName());
         myCoach = theCoach;
