@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
     // define private field for the dependency
     private Coach myCoach;
-    private Coach anotherCoach;
+//    private Coach anotherCoach;
 
     // constructor for dpdc injection
     @Autowired // tell Spring to inject dependency
     // optional if there's just 1 constructor
-    public DemoController(@Qualifier("cricketCoach") Coach theCoach,
-                          @Qualifier("cricketCoach") Coach theAnotherCoach) {
+    public DemoController(@Qualifier("cricketCoach") Coach theCoach
+                         /* @Qualifier("cricketCoach") Coach theAnotherCoach*/) {
         System.out.println("ctor: " + getClass().getSimpleName());
         myCoach = theCoach;
-        anotherCoach = theAnotherCoach;
+//        anotherCoach = theAnotherCoach;
     }
 
 /*    @Autowired // can be any method name
@@ -38,10 +38,5 @@ public class DemoController {
     @GetMapping("/dailyworkout")
     public String getDailyWorkout() {
         return myCoach.getDailyWorkout();
-    }
-
-    @GetMapping("/check")
-    public boolean checkScope() {
-        return myCoach == anotherCoach;
     }
 }
