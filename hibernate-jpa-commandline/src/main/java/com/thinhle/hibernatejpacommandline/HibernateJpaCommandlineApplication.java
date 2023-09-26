@@ -17,8 +17,19 @@ public class HibernateJpaCommandlineApplication {
     @Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
-            createStudent(studentDAO);
+            readStudent(studentDAO);
         };
+    }
+
+    private void readStudent(StudentDAO studentDAO) {
+        int id = 11;
+        System.out.println("finding student " + id);
+        Student a = studentDAO.findById(id);
+        if (a == null) {
+            System.out.println("not found");
+        } else {
+            System.out.println(a);
+        }
     }
 
     private void createStudent(StudentDAO studentDAO) {
