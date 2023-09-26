@@ -2,6 +2,7 @@ package com.thinhle.hibernatejpacommandline.dao;
 
 import com.thinhle.hibernatejpacommandline.entity.Student;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -57,5 +58,13 @@ public class StudentDAOImpl implements StudentDAO {
     public void delete(int id) {
         Student stud = entityManager.find(Student.class, id);
         entityManager.remove(stud);
+    }
+
+    @Override
+    @Transactional
+    public int deleteByLastName(String lastName) {
+        Query query = entityManager.createQuery("DELETE FROM Student WHERE lastName=:data");
+        query.setParameter("data", lastName);
+        return query.executeUpdate();
     }
 }
