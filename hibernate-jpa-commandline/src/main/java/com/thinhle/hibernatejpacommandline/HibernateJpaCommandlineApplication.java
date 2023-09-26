@@ -19,8 +19,13 @@ public class HibernateJpaCommandlineApplication {
     @Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
-            updateStudents(studentDAO);
+            deleteStudent(studentDAO);
         };
+    }
+
+    private void deleteStudent(StudentDAO studentDAO) {
+        System.out.println("Deleting...");
+        studentDAO.delete(1);
     }
 
     private void updateStudents(StudentDAO studentDAO) {
