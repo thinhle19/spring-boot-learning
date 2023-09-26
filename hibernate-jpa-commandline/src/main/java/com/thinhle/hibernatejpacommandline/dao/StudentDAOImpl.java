@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 @Repository // support component scanning
@@ -33,6 +34,15 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public List<Student> findAll() {
         TypedQuery<Student> query = entityManager.createQuery("from Student order by lastName desc", Student.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Student> findByLastName(String lastName) {
+        TypedQuery<Student> query = entityManager.createQuery("FROM Student WHERE lastName=:data", Student.class);
+
+        query.setParameter("data", lastName);
+
         return query.getResultList();
     }
 }

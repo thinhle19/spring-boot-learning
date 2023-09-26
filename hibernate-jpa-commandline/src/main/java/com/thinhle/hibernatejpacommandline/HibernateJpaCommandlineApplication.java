@@ -24,8 +24,8 @@ public class HibernateJpaCommandlineApplication {
     }
 
     private void findAllStudents(StudentDAO studentDAO) {
-        System.out.println("Finding all stud...");
-        List<Student> res = studentDAO.findAll();
+        System.out.println("Finding all stud by lastName...");
+        List<Student> res = studentDAO.findByLastName("Le");
 
         for (Student stud : res) {
             System.out.println(stud);
