@@ -19,7 +19,7 @@ public class HibernateJpaCommandlineApplication {
     @Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
-            deleteByLastName(studentDAO);
+            createStudent(studentDAO);
         };
     }
 
