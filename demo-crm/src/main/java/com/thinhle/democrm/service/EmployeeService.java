@@ -1,8 +1,10 @@
-package com.thinhle.democrm.entity;
+package com.thinhle.democrm.service;
+
+import com.thinhle.democrm.entity.Employee;
 
 import java.util.List;
 
-public interface EmployeeDAO {
+public interface EmployeeService {
     List<Employee> getAll();
 
     Employee getById(int id);
