@@ -1,5 +1,6 @@
 package com.thinhle.democrm.service;
 
+import com.thinhle.democrm.dao.EmployeeRepository;
 import com.thinhle.democrm.entity.Employee;
 import com.thinhle.democrm.entity.EmployeeDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,35 +8,44 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-    private EmployeeDAO employeeDAO;
+    //    private EmployeeDAO employeeDAO;
+    private EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeDAO employeeDAO) {
-        this.employeeDAO = employeeDAO;
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
 
     @Override
     public List<Employee> getAll() {
-        return employeeDAO.getAll();
+        return employeeRepository.findAll();
     }
 
     @Override
     public Employee getById(int id) {
-        return employeeDAO.getById(id);
+        Optional<Employee> result = employeeRepository.findById(id);
+
+        Employee employee = null;
+        if (result.isPresent()) {
+            employee = result.get();
+        } else {
+            throw new RuntimeException("Not Found Employee " + id);
+        }
+
+        return employee;
     }
 
     @Override
-    @Transactional
     public Employee save(Employee employee) {
-        return employeeDAO.save(employee);
+        return employeeRepository.save(employee);
     }
 
     @Override
-    @Transactional
     public void delete(int id) {
-        employeeDAO.delete(id);
+        employeeRepository.deleteById(id);
     }
 }
