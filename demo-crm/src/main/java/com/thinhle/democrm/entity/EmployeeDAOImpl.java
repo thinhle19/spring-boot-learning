@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.swing.text.html.parser.Entity;
@@ -41,7 +42,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public void delete(int id) {
-        var employee = entityManager.find(EmployeeDAO.class, id);
+        var employee = entityManager.find(Employee.class, id);
 
         entityManager.remove(employee);
     }
